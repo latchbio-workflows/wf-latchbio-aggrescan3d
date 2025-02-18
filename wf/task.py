@@ -1,5 +1,6 @@
 import subprocess
 import sys
+import time
 from pathlib import Path
 from typing import List, Optional
 
@@ -19,7 +20,7 @@ def aggrescan3d_task(
     input_pdb: Optional[LatchFile] = None,
     input_pdb_folder: Optional[LatchDir] = None,
     output_directory: LatchOutputDir = LatchOutputDir("latch:///Aggrescan3D"),
-    dynamic: bool = False,
+    # dynamic: bool = False,
     distance: Optional[float] = None,
     cabs_config: Optional[str] = None,
     n_models: Optional[int] = None,
@@ -66,8 +67,8 @@ def aggrescan3d_task(
 
         if distance:
             command.extend(["-D", str(distance)])
-        if dynamic:
-            command.append("-d")
+        # if dynamic:
+        #     command.append("-d")
         if cabs_config:
             command.extend(["--cabs_config", cabs_config])
         if n_models:
@@ -88,4 +89,5 @@ def aggrescan3d_task(
 
     print("-" * 60)
     print("Returning results")
+    time.sleep(1000)
     return LatchOutputDir(str("/root/outputs"), output_directory.remote_path)
