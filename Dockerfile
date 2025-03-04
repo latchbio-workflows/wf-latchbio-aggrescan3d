@@ -50,6 +50,10 @@ RUN conda create -n aggrescan3d_env python=2.7 pip -y
 RUN conda run -n aggrescan3d_env conda install -c lcbio cabs -y && \
     conda run -n aggrescan3d_env conda install -c lcbio aggrescan3d -y
 
+RUN conda run -n aggrescan3d_env conda install -c salilab modeller -y && \
+conda run -n aggrescan3d_env conda install -c salilab dssp -y
+
+
 RUN apt-get update && apt-get install -y ffmpeg pymol
 
 ENV PATH=/opt/conda/envs/aggrescan3d_env/bin:$PATH

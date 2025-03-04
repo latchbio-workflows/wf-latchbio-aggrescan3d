@@ -4,18 +4,9 @@ from latch.resources.launch_plan import LaunchPlan
 from latch.resources.workflow import workflow
 from latch.types.directory import LatchDir, LatchOutputDir
 from latch.types.file import LatchFile
-from latch.types.metadata import (
-    Fork,
-    ForkBranch,
-    LatchAuthor,
-    LatchMetadata,
-    LatchParameter,
-    LatchRule,
-    Params,
-    Section,
-    Spoiler,
-    Text,
-)
+from latch.types.metadata import (Fork, ForkBranch, LatchAuthor, LatchMetadata,
+                                  LatchParameter, LatchRule, Params, Section,
+                                  Spoiler, Text)
 
 from wf.task import aggrescan3d_task
 
@@ -37,7 +28,7 @@ flow = [
         Spoiler(
             "Analysis Options",
             Params(
-                "dynamic",
+                # "dynamic",
                 "distance",
                 "cabs_config",
                 "n_models",
@@ -91,10 +82,10 @@ metadata = LatchMetadata(
             description="Directory to store the analysis results",
             batch_table_column=True,
         ),
-        "dynamic": LatchParameter(
-            display_name="Dynamic Analysis",
-            description="Use the dynamic module for the simulation",
-        ),
+        # "dynamic": LatchParameter(
+        #     display_name="Dynamic Analysis",
+        #     description="Use the dynamic module for the simulation",
+        # ),
         "distance": LatchParameter(
             display_name="Distance Cutoff",
             description="Distance cutoff for naccess calculations",
@@ -131,7 +122,7 @@ def aggrescan3d_workflow(
     input_pdb: Optional[LatchFile] = None,
     input_pdb_folder: Optional[LatchDir] = None,
     output_directory: LatchOutputDir = LatchOutputDir("latch:///Aggrescan3D"),
-    dynamic: bool = False,
+    # dynamic: bool = False,
     distance: Optional[float] = None,
     cabs_config: Optional[str] = None,
     n_models: Optional[int] = None,
@@ -191,7 +182,7 @@ def aggrescan3d_workflow(
         input_pdb=input_pdb,
         input_pdb_folder=input_pdb_folder,
         output_directory=output_directory,
-        dynamic=dynamic,
+        # dynamic=dynamic,
         distance=distance,
         cabs_config=cabs_config,
         n_models=n_models,
